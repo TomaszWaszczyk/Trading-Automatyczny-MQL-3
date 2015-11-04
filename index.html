@@ -129,13 +129,13 @@ Webinar3:
             <h2>Agenda</h2>
             <ul>
                 <li>Metody ustawiania zlecenia stop loss</li>
-                <li>Zarzadzanie portfelem - wielkosc pozycji</li>
+                <li>Zarzadzanie portfelem - wielkość pozycji</li>
                 <li>Zmienne predefiniowane</li>
                 <li>Architektura MetaTrader</li>
-                <li>Zmiana przedzialu czasowego</li>
+                <li>Zmiana przedziału czasowego</li>
                 <li>Zaktualizowany MQL</li>
                 <li>Engulfing pattern w MQL</li>
-                <li>Jakie IDE do MQL ?</li>
+                <li>Jakie IDE do MQL?</li>
                 <li>Gdzie szukać pomocy technicznej</li>
                 <li>Wersjonowanie naszych automatów</li>
                 <li>. . .</li>
@@ -170,7 +170,7 @@ double BuyStopLoss = Low[LowestShift];
 
 
         <section>
-            <h2>Zarzadzanie wielkoscia pozycji</h2>
+            <h2>Zarzadząnie wielkoscia pozycji</h2>
 
             <pre><code class="c" data-trim contenteditable>
  // External variables
@@ -188,6 +188,10 @@ double BuyStopLoss = Low[LowestShift];
  }
  else LotSize = FixedLotSize;
             </code></pre>
+        </section>
+
+        <section>
+            <h2>Do jakich informacji mamy dostęp z MQL - zmienne predefiniowane</h2>
         </section>
 
         <section>
@@ -277,6 +281,10 @@ return 0;
 
 
         <section>
+            <h2>Jakie IDE do programowania ? </h2>
+        </section>
+
+
             <section id="fragments">
                 <p>Z automatami na kilka rynków spotkałem się przy przeglądaniu konkursu MQL organizowanej przez firmę Metaquotes, tam cześć uczestników używało automatów na kilka rynków, stąd wiem że technicznie</p>
                 <p>jest to możliwe....</p>
@@ -286,12 +294,12 @@ return 0;
         </section>
 
         <section>
-            <h2>Co nowego w jezyku MQL ? </h2>
-            <li>Obiektowosc - OOP czyli klasy</li>
-            <li>Nowe typy danych - uklon w strone C++</li>
-            <li>Zmiana struktury katalogow</li>
+            <h2>Co nowego w języku MQL ? </h2>
+            <li>Obiektowość - OOP czyli klasy</li>
+            <li>Nowe typy danych - uklon w stronę C++</li>
+            <li>Zmiana struktury katalógow</li>
             <li>Szablony funkcji - sekcja naprawde zaawansowana</li>
-            <li>Optymalizacja jezyka - przyklad petla "if"</li>
+            <li>Optymalizacja języka - przykład pętla "if"</li>
             <li>MQL5 Storage</li>
         </section>
 
@@ -334,6 +342,11 @@ while(IsTradeContextBusy()) Sleep(10);
 
 int Ticket = OrderSend(Symbol(),OP_BUY,LotSize,Ask,UseSlippage,0,0,"Buy Order",MagicNumber,0,Green);
            </code></pre>
+        </section>
+
+
+        <section>
+            <h2>Gdzie szukać pomocy technicznej ?</h2>
         </section>
 
 
