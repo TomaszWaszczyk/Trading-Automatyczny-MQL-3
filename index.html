@@ -21,448 +21,338 @@ Rodzaje programów które możemy pisać w MQL
 
 Webinar3:
 
+
+
+
+<pre><code class="c" data-trim contenteditable>
+
+</code></pre>
+
+
+
+
 -->
 
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
 
-		<title>Programowanie automatycznych strategii transakcyjnych, 27,28.10.2015</title>
+    <title>Programowanie automatycznych strategii transakcyjnych, 4.11.2015</title>
 
-		<meta name="description" content="Programowanie automatycznych strategii transakcyjnych, 3,4.11.2015">
-		<meta name="author" content="Tomasz Waszczyk">
+    <meta name="description" content="Programowanie automatycznych strategii transakcyjnych, 3,4.11.2015">
+    <meta name="author" content="Tomasz Waszczyk">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
 
-	<body>
+<body>
 
-		<div class="reveal">
+<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h4>Programowanie automatycznych strategii transakcyjnych</h4>
-					<h5>Część trzecia - zaawansowana 4.11.2015</h5>
-					<p>
-						<small>Stworzone przez <a href="http://www.blog.waszczyk.com">Tomasz Waszczyk</a> / <a href="https://twitter.com/boomattache">Twitter @Boomattache</a></small>
-					</p>
-				</section>
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section>
+            <h4>Programowanie automatycznych strategii transakcyjnych</h4>
+            <h5>Część trzecia - zaawansowana 4.11.2015</h5>
 
-				<section>
-					<small>
-						„Niniejsza prezentacja jest efektem wspólnych prac Domu Maklerskiego TMS Brokers S.A. oraz Pana Tomasza Waszczyka
+            <p>
+                <small>Stworzone przez <a href="http://www.blog.waszczyk.com">Tomasz Waszczyk</a> / <a
+                        href="https://twitter.com/boomattache">Twitter @Boomattache</a></small>
+            </p>
+        </section>
 
-						Materiały zawarte w niniejszej prezentacji mają charakter edukacyjny i nie stanowią działalności maklerskiej polegającej na doradztwie inwestycyjnym lub wydawaniu rekomendacji o charakterze ogólnym. Zaprezentowane podczas warsztatów (w tym w niniejszej prezentacji) algorytmy mają charakter jedynie poglądowy w celu zobrazowania i nauki języka programowania modułu Expert Advisor  dla systemu transakcyjnego MetaTrader. Korzystając z algorytmów klient powinien mieć na względzie, że:
-						1.       Klient wykorzystuje mechanizmy algorytmiczne na własne ryzyko i odpowiedzialność.
-						2.       Klient ponosi pełną odpowiedzialność za straty lub utracone korzyści związane z realizacją zleceń za pomocą mechanizmów algorytmicznych. Dotyczy to także prowizji, jakie Klient będzie zobowiązany pokryć w związku z transakcjami, które będą zawierane w oparciu o algorytm, nawet przy ich znacznej ilości.
-						3.       Klient odpowiada za opóźnione wygenerowanie lub  niewygenerowanie lub błędne wygenerowanie zleceń za pomocą mechanizmów algorytmicznych. W szczególności Klient ponosi odpowiedzialność za ww. zdarzenia powstałe w wyniku błędów w oprogramowaniu mechanizmów algorytmicznych.
-						4.       Nie można zagwarantować osiągnięcia określonego wyniku finansowego na transakcjach zawartych z wykorzystaniem mechanizmów algorytmicznych.
-						5.       Transakcje realizowane za pomocą mechanizmów algorytmicznych traktowane są jako transakcje zawierane przez Klienta.
-						6.       Składanie, usuwanie lub modyfikowanie zleceń z wykorzystaniem mechanizmów algorytmicznych traktowane jest jako zlecenia złożone przez Klienta.
-						7.       W wersji webowej oraz mobilnej systemu transakcyjnego może nie istnieć możliwość uruchomienia strategii automatycznych.
-						8.       Wszelkie przykładowe strategie algorytmiczne zaprezentowane w czasie niniejszego szkolenia mają jedynie charakter edukacyjny i nie powinny być stosowne na rachunkach rzeczywistych.
-						Dom Maklerski TMS Brokers S.A. podlega nadzorowi Komisji Nadzoru Finansowego i prowadzi działalność maklerską na podstawie zezwolenia z dnia 26 kwietnia 2004 r. (KPWiG-4021-54-1/2004). Kontakt: Skylight Ul. Złota 59; 00-120 Warszawa, Polska; Tel.: +48 22 27 66 200”
-					</small>
-				</section>
+        <section>
+            <small>
+                „Niniejsza prezentacja jest efektem wspólnych prac Domu Maklerskiego TMS Brokers S.A. oraz Pana Tomasza
+                Waszczyka
 
-				<section>
-					<h3>Książka</h3>
-					<img width="40%" height="40%" src="resources/trading_automatyczny-waszczyk-probka.1-page-001.jpg" /><br>
-					<a href="https://www.investmentuniversity.pl/e-booki/trading-automatyczny" target="_blank">Pobierz</a>
-				</section>
+                Materiały zawarte w niniejszej prezentacji mają charakter edukacyjny i nie stanowią działalności
+                maklerskiej polegającej na doradztwie inwestycyjnym lub wydawaniu rekomendacji o charakterze ogólnym.
+                Zaprezentowane podczas warsztatów (w tym w niniejszej prezentacji) algorytmy mają charakter jedynie
+                poglądowy w celu zobrazowania i nauki języka programowania modułu Expert Advisor dla systemu
+                transakcyjnego MetaTrader. Korzystając z algorytmów klient powinien mieć na względzie, że:
+                1. Klient wykorzystuje mechanizmy algorytmiczne na własne ryzyko i odpowiedzialność.
+                2. Klient ponosi pełną odpowiedzialność za straty lub utracone korzyści związane z realizacją zleceń za
+                pomocą mechanizmów algorytmicznych. Dotyczy to także prowizji, jakie Klient będzie zobowiązany pokryć w
+                związku z transakcjami, które będą zawierane w oparciu o algorytm, nawet przy ich znacznej ilości.
+                3. Klient odpowiada za opóźnione wygenerowanie lub niewygenerowanie lub błędne wygenerowanie zleceń za
+                pomocą mechanizmów algorytmicznych. W szczególności Klient ponosi odpowiedzialność za ww. zdarzenia
+                powstałe w wyniku błędów w oprogramowaniu mechanizmów algorytmicznych.
+                4. Nie można zagwarantować osiągnięcia określonego wyniku finansowego na transakcjach zawartych z
+                wykorzystaniem mechanizmów algorytmicznych.
+                5. Transakcje realizowane za pomocą mechanizmów algorytmicznych traktowane są jako transakcje zawierane
+                przez Klienta.
+                6. Składanie, usuwanie lub modyfikowanie zleceń z wykorzystaniem mechanizmów algorytmicznych traktowane
+                jest jako zlecenia złożone przez Klienta.
+                7. W wersji webowej oraz mobilnej systemu transakcyjnego może nie istnieć możliwość uruchomienia
+                strategii automatycznych.
+                8. Wszelkie przykładowe strategie algorytmiczne zaprezentowane w czasie niniejszego szkolenia mają
+                jedynie charakter edukacyjny i nie powinny być stosowne na rachunkach rzeczywistych.
+                Dom Maklerski TMS Brokers S.A. podlega nadzorowi Komisji Nadzoru Finansowego i prowadzi działalność
+                maklerską na podstawie zezwolenia z dnia 26 kwietnia 2004 r. (KPWiG-4021-54-1/2004). Kontakt: Skylight
+                Ul. Złota 59; 00-120 Warszawa, Polska; Tel.: +48 22 27 66 200”
+            </small>
+        </section>
 
-				<section>
-					<h2>Agenda</h2>
-					<ul>
-						<li>Uruchomienie strategii z poprzedniego szkolenia</li>
-						<li>Odpowiedź na parę pytań dotyczących strategii</li>
-						<li>Implementacja skryptu zamykającego wszystkie otwarte zlecenia</li>
-						<li>Zabezpieczenie naszego automatu transakcyjnego</li>
-						<li>Zmienna predefiniowana Point</li>
-						<li>Metody ustawiania zlecenia stop loss</li>
-						<li>. . .</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Czym jest HFT ?</h2>
-					<iframe data-autoplay width="520" height="445" src="http://www.youtube.com/embed/z4nCTdQlH8w"></iframe>
-				</section>
-
-				<section>
-					<h2>Przypomnienie z części pierwszej szkolenia</h2>
-					<a href="https://raw.githubusercontent.com/TomaszWaszczyk/Trading-Automatyczny-MQL/master/prostaEA_13102015.mq4" target="_blank">Cały kod źródłowy</a> <br>
-					<pre><code class="c">
-#property copyright "Tomasz Waszczyk"
-#property link      "https://www.waszczyk.com"
-#property version   "1.00"
-#property strict
-
-#define MAGIC_NUMBER 20151025
-#define OPEN_BUY_SIGNAL 1
-#define OPEN_SELL_SIGNAL -1
-#define NO_SIGNAL 0
-
-// slowo kluczowe extern pozwala uzytkownikowi wprowadzic wartosci
-//zmiennych za pomoca okna eksperta
-extern int       OkresSzybkiejSredniej = 10;
-extern int       OkresWolnejSredniej  = 50;
-// 0.1 = 1 pip
-extern int       StopLoss      = 500;
-extern int       TakeProfit    = 1600;
-// wolumen transakcji
-extern double    Lots=1;
-					</code></pre>
-				</section>
-
-				
-								<section data-markdown>
-					<script type="text/template">
-						```
-#property copyright "Tomasz Waszczyk"
-#property link      "https://www.waszczyk.com"
-#property version   "1.00"
-#property strict
-
-#define MAGIC_NUMBER 20151025
-#define OPEN_BUY_SIGNAL 1
-#define OPEN_SELL_SIGNAL -1
-#define NO_SIGNAL 0
-
-// slowo kluczowe extern pozwala uzytkownikowi wprowadzic wartosci
-//zmiennych za pomoca okna eksperta
-extern int       OkresSzybkiejSredniej = 10;
-extern int       OkresWolnejSredniej  = 50;
-// 0.1 = 1 pip
-extern int       StopLoss      = 500;
-extern int       TakeProfit    = 1600;
-// wolumen transakcji
-extern double    Lots=1;
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-// &ma[] oznacza przeslanie przez referencje
-void MaAktualneWartosci(double &ma[],int maPeriod,int numValues=3)
-{
-// i = 0 oznacza aktualna cene, i = 1 poprzednia cene (bar)
-   for(int i=0; i< numValues; i++)
-     {
-      ma[i]=iMA(NULL,0,maPeriod,0,MODE_SMA,PRICE_CLOSE,i);
-     }
-}
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-int SprawdzTypWygenerowanegoZlecenia()
-  {
-   int signal=NO_SIGNAL;
-
-// otworz zlecenie na pierwszym barze, chroni przed zwielokrotnionym
-// otwarciem zlecen
-   if(Volume[0] > 1) return(0);
-
-// pobierz wartosci MA
-   double shortMa[3];
-   MaAktualneWartosci(shortMa,OkresSzybkiejSredniej,3);
-
-   double longMa[3];
-   MaAktualneWartosci(longMa,OkresWolnejSredniej,3);
-
-// sprawdzanie warunkow dla zlecen typu "kupno" 
-   if(shortMa[2]<longMa[2]
-      && shortMa[1]>longMa[1])
-     {
-      signal=OPEN_BUY_SIGNAL;
-     }
-
-// sprawdzanie warunkow dla zlecen typu "sprzedaz" 
-   if(shortMa[2]>longMa[2]
-      && shortMa[1]<longMa[1])
-     {
-      signal=OPEN_SELL_SIGNAL;
-     }
-     
-   return(signal);
-  }
-//+------------------------------------------------------------------+
-//| Expert initialization function                                   |
-//+------------------------------------------------------------------+
-int OnInit()
-  {
-
-   return(INIT_SUCCEEDED);
-  }
-//+------------------------------------------------------------------+
-//| Expert deinitialization function                                 |
-//+------------------------------------------------------------------+
-void OnDeinit(const int reason)
-  {
-//---
-
-  }
-//+------------------------------------------------------------------+
-//| Funkcja OnTick wywouluje sie przy kazdym nowym ticku             |
-//+------------------------------------------------------------------+
-void OnTick()
-{
-   int signal=SprawdzTypWygenerowanegoZlecenia();
-
-// zabezpieczenie sie przed bledem o numerze 138
-   int slippage=30;
-
-   if(signal==OPEN_BUY_SIGNAL)
-     {
-      Print("Sygnal kupna");
-      OrderSend(Symbol(),OP_BUY,Lots,Bid,slippage,
-                Bid-StopLoss*Point,// cena SL
-                Bid+TakeProfit*Point,// cena TP
-                NULL,MAGIC_NUMBER,0,Green);
-     }
-
-   else if(signal==OPEN_SELL_SIGNAL)
-     {
-      Print("Sygnal sprzedazy");
-      OrderSend(Symbol(),OP_SELL,Lots,Ask,slippage,
-                Ask+StopLoss*Point,// cena SL
-                Ask-TakeProfit*Point,// cena TP
-                NULL,MAGIC_NUMBER,0,Red);
-     }
-  }
-//+------------------------------------------------------------------+
-						```
-					</script>
-				</section>
-				
-				
-				<section>
-					<section>
-						<h2>Jak uruchomić strategię z poprzedniego szkolenia ?</h2>
-
-						<br>
-					</section>
-
-					<section>
-						<h2>Dlaczego potrzebujemy numValues = 3 ?</h2>
-						<pre><code class="c" data-trim contenteditable>
-void MaAktualneWartosci(double &ma[],int maPeriod,int numValues=3)
-{
-// i is the index of the price array to calculate the MA value for.
-// e.g. i=0 is the current price, i=1 is the previous bar's price.
-for(int i=0; i< numValues; i++)
-{
-	ma[i]=iMA(NULL,0,maPeriod,0,MODE_SMA,PRICE_CLOSE,i);
-}
-}
-						</code></pre>
-					</section>
+        <section>
+            <h3>Książka</h3>
+            <img width="40%" height="40%" src="resources/trading_automatyczny-waszczyk-probka.1-page-001.jpg"/><br>
+            <a href="https://www.investmentuniversity.pl/e-booki/trading-automatyczny" target="_blank">Pobierz</a>
+        </section>
 
 
-					<section>
-						<h2>Przetestujmy naszą strategię, rodzaje testów</h2>
-						
-						<ol>
-							<li>Forward testing</li>
-							<li>Backtesting </li>
-						</ol>
-					</section>
-				</section>
+        <section>
+            <h2>Agenda</h2>
+            <ul>
+                <li>Metody ustawiania zlecenia stop loss</li>
+                <li>Zarzadzanie portfelem - wielkosc pozycji</li>
+                <li>Zmienne predefiniowane - skrypt</li>
+                <li>Architektura MetaTrader</li>
+                <li>Zaktualizowany MQL</li>
+                <li>Engulfing pattern w MQL</li>
+                <li>Jakie IDE do MQL ?</li>
+                <li>Gdzie szukać pomocy technicznej</li>
+                <li>Wersjonowanie naszych automatów</li>
+                <li>. . .</li>
+            </ul>
+        </section>
 
 
-				<section>
-					<h2>Jak zabezpieczać naszą pracę ? </h2>
-					<p>DLL</p>
-					<p>Library</p>
-				</section>
-
-
-				<section>
-					<h2>Co to jest zmienna predefiniowana Point</h2>
-						<pre><code class="c" data-trim contenteditable>
-double OpenPrice = Ask;
-if(StopLoss > 0) double BuyStopLoss = OpenPrice – (StopLoss * Point);
-// 1.1300 - (30 * 0.0001) = 1.1270
-						</code></pre>
-				</section>
-
-				<section>
-					<h2>Funkcja która pokazuje prawdziwą liczbę pips</h2>
-						<pre><code class="c" data-trim contenteditable>
-double Pips(string paraWalutowa)
-{
-int CalcDigits = MarketInfo(Currency,MODE_DIGITS);
-if(CalcDigits == 2 || CalcDigits == 3) double CalcPoint = 0.01;
-else if(CalcDigits == 4 || CalcDigits == 5) CalcPoint = 0.0001;
-return(CalcPoint);
-}
-						</code></pre>
-				
-				</section>
-
-
-				<section>
-					<section id="fragments">
-						<h2>Ile pracy wymaga...</h2>
-						<p>programowanie automatycznych...</p>
-						<p class="fragment">... strategii transakcyjnych ...</p>
-						<p><span class="fragment">... dużo,</span> <span class="fragment">bardzo dużo</span> <span class="fragment">oraz należy handlować manualnie.</span></p>
-					</section>
-				</section>
-
-
-				<section>
-					<h2>Funkcja która oblicza poślizg automatycznie</h2>
-						<pre><code class="c" data-trim contenteditable>
-int GetSlippage(string Currency, int SlippagePips)
-{
-int CalcDigits = MarketInfo(Currency,MODE_DIGITS);
-if(CalcDigits == 2 || CalcDigits == 4) double CalcSlippage = SlippagePips;
-else if(CalcDigits == 3 || CalcDigits == 5) CalcSlippage = SlippagePips * 10;
-return(CalcSlippage);}
-						</code></pre>
-
-				</section>
-				
-				
-				<section>
-					<h2>Metody ustawiania SL</h2>
+        <section>
+            <h2>Metody ustawiania SL</h2>
 						<pre><code class="c" data-trim contenteditable>
 int liczbaSwiec = 10;
 int LowestShift = iLowest(NULL,0,MODE_LOW,liczbaSwiec,0);
 double BuyStopLoss = Low[LowestShift];
-						</code></pre>
-				</section>
+                        </code></pre>
+        </section>
 
 
-				<section>
-					<h2>Alternatywny sposób ustawiania SL - Parabolic SAR</h2>
-						<img width="40%" height="60%" src="resources/sar.gif" /><br>
-					<p></p>
+        <section>
+            <h2>Alternatywny sposób ustawiania SL - Parabolic SAR</h2>
+            <img width="40%" height="60%" src="resources/sar.gif"/><br>
 
+            <p></p>
 					<pre><code class="c" data-trim contenteditable>
-						SAR(i) = SAR(i-1)+PRZYSPIESZENIE*(CENA_POPRZEDNIA(i-1)-SAR(i-1))
-				</code></pre>
-				</section>
+                        SAR(i) = SAR(i-1)+PRZYSPIESZENIE*(CENA_POPRZEDNIA(i-1)-SAR(i-1))
+                    </code></pre>
+        </section>
 
 
-				<section>
-					<h2>Co sądzę o sprzedawanych automatach?</h2>
-					<blockquote cite="">
-						&ldquo;Nie ma darmowych obiadów.&rdquo;
-					</blockquote>
-				</section>
+        <section>
+            <h2>Volatility stop loss</h2>
+        </section>
 
 
-				<section>
-					<h3>Ciekawostka z podróży</h3>
-					<img width="40%" height="50%" src="resources/UMveKeS.png" /><br>
-				</section>
+        <section>
+            <h2>Zarzadzanie wielkoscia pozycji</h2>
 
-
-				<section>
-					<small>
-						„Niniejsza prezentacja jest efektem wspólnych prac Domu Maklerskiego TMS Brokers S.A. oraz Pana Tomasza Waszczyka
-
-						Materiały zawarte w niniejszej prezentacji mają charakter edukacyjny i nie stanowią działalności maklerskiej polegającej na doradztwie inwestycyjnym lub wydawaniu rekomendacji o charakterze ogólnym. Zaprezentowane podczas warsztatów (w tym w niniejszej prezentacji) algorytmy mają charakter jedynie poglądowy w celu zobrazowania i nauki języka programowania modułu Expert Advisor  dla systemu transakcyjnego MetaTrader. Korzystając z algorytmów klient powinien mieć na względzie, że:
-						1.       Klient wykorzystuje mechanizmy algorytmiczne na własne ryzyko i odpowiedzialność.
-						2.       Klient ponosi pełną odpowiedzialność za straty lub utracone korzyści związane z realizacją zleceń za pomocą mechanizmów algorytmicznych. Dotyczy to także prowizji, jakie Klient będzie zobowiązany pokryć w związku z transakcjami, które będą zawierane w oparciu o algorytm, nawet przy ich znacznej ilości.
-						3.       Klient odpowiada za opóźnione wygenerowanie lub  niewygenerowanie lub błędne wygenerowanie zleceń za pomocą mechanizmów algorytmicznych. W szczególności Klient ponosi odpowiedzialność za ww. zdarzenia powstałe w wyniku błędów w oprogramowaniu mechanizmów algorytmicznych.
-						4.       Nie można zagwarantować osiągnięcia określonego wyniku finansowego na transakcjach zawartych z wykorzystaniem mechanizmów algorytmicznych.
-						5.       Transakcje realizowane za pomocą mechanizmów algorytmicznych traktowane są jako transakcje zawierane przez Klienta.
-						6.       Składanie, usuwanie lub modyfikowanie zleceń z wykorzystaniem mechanizmów algorytmicznych traktowane jest jako zlecenia złożone przez Klienta.
-						7.       W wersji webowej oraz mobilnej systemu transakcyjnego może nie istnieć możliwość uruchomienia strategii automatycznych.
-						8.       Wszelkie przykładowe strategie algorytmiczne zaprezentowane w czasie niniejszego szkolenia mają jedynie charakter edukacyjny i nie powinny być stosowne na rachunkach rzeczywistych.
-						Dom Maklerski TMS Brokers S.A. podlega nadzorowi Komisji Nadzoru Finansowego i prowadzi działalność maklerską na podstawie zezwolenia z dnia 26 kwietnia 2004 r. (KPWiG-4021-54-1/2004). Kontakt: Skylight Ul. Złota 59; 00-120 Warszawa, Polska; Tel.: +48 22 27 66 200”
-					</small>
-				</section>
-
-				<section style="text-align: left;">
-					<h1>Dziękuję za uwagę</h1>
-
-					<a>Zapraszam do zadawania pytań.</a><br>
-					<a>tomasz@waszczyk.com</a>
-				</section>
+            <pre><code class="c" data-trim contenteditable>
+ // External variables
+ extern bool DynamicLotSize = true;
+ extern double EquityPercent = 2;
+ extern double FixedLotSize = 0.1;
+ // Start function
+ if(DynamicLotSize == true)
+ {
+ double RiskAmount = AccountEquity() * (EquityPercent / 100);
+ double TickValue = MarketInfo(Symbol(),MODE_TICKVALUE);
+ if(Digits == 3 || Digits == 5) TickValue *= 10;
+ double CalcLots = (RiskAmount / StopLoss) / TickValue;
+ double LotSize = CalcLots;
+ }
+ else LotSize = FixedLotSize;
+            </code></pre>
 
 
 
 
 
-				<!--Szkolenie 3:-->
-				<!--<section>-->
-					<!--<h2>Agenda</h2>-->
-					<!--<ul>-->
-						<!--<li>Uruchomienie strategii z poprzedniego szkolenia</li>-->
-						<!--<li>Metody ustawiania zlecenia Stop Loss</li>-->
-						<!--<li>Obliczanie poziomów zlecenia Take Profit</li>-->
-						<!--<li>Wprowadzanie zleceń oczekujących do automatu</li>-->
-						<!--<li>Zabezpieczenie naszego automatu transakcyjnego</li>-->
-						<!--<li>Programowanie obiektowe – MQL5 różnice oraz możliwości</li>-->
-					<!--</ul>-->
-				<!--</section>-->
+        </section>
+
+        <section>
+            <h2>Architektura MetaTrader</h2>
+            <img src="resources/architecture.jpg"/><br>
+        </section>
 
 
+        <section>
+            <h2>Co nowego w jezyku MQL ? </h2>
+            <li>Obiektowosc - OOP czyli klasy</li>
+            <li>Nowe typy danych - uklon w strone C++</li>
+            <li>Zmiana struktury katalogow</li>
+            <li>Szablony funkcji - sekcja naprawde zaawansowana</li>
+        </section>
 
 
+        <section>
+            <h2>Szablony funkcji</h2>
+                        <pre><code class="c" data-trim contenteditable>
+template< typename T>
+T ArrayMax(T &arr[])
+{
+uint size=ArraySize(arr);
+if(size==0) return(0);
 
-			</div>
-		</div>
+T max=arr[0];
+for(uint n=1;n < size ;n++)
+if(max < arr[n]) max=arr[n];
+//---
+return(max);
+}
+                        </code></pre>
+        </section>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
 
-		<script>
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+        <section>
+            <h2>Dlaczego wazne jest odswiezanie ceny?</h2>
+            <pre><code class="c" data-trim contenteditable>
+RefreshRates()
+            </code></pre>
+        </section>
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+        <section>
+            <h2>Wielowatkowosc w MQL</h2>
+           <pre><code class="c" data-trim contenteditable>
+while(IsTradeContextBusy()) Sleep(10);
 
-			Reveal.configure({ slideNumber: true });
-			// Slide number formatting can be configured using these variables:
-			//  h: current slide's horizontal index
-			//  v: current slide's vertical index
-			//  c: current slide index (flattened)
-			//  t: total number of slides (flattened)
-			Reveal.configure({ slideNumber: 'c / t' });
-		</script>
+int Ticket = OrderSend(Symbol(),OP_BUY,LotSize,Ask,UseSlippage,0,0,"Buy Order",MagicNumber,0,Green);
+           </code></pre>
+        </section>
+        <section>
+            <small>
+                „Niniejsza prezentacja jest efektem wspólnych prac Domu Maklerskiego TMS Brokers S.A. oraz Pana Tomasza
+                Waszczyka
 
-	</body>
+                Materiały zawarte w niniejszej prezentacji mają charakter edukacyjny i nie stanowią działalności
+                maklerskiej polegającej na doradztwie inwestycyjnym lub wydawaniu rekomendacji o charakterze ogólnym.
+                Zaprezentowane podczas warsztatów (w tym w niniejszej prezentacji) algorytmy mają charakter jedynie
+                poglądowy w celu zobrazowania i nauki języka programowania modułu Expert Advisor dla systemu
+                transakcyjnego MetaTrader. Korzystając z algorytmów klient powinien mieć na względzie, że:
+                1. Klient wykorzystuje mechanizmy algorytmiczne na własne ryzyko i odpowiedzialność.
+                2. Klient ponosi pełną odpowiedzialność za straty lub utracone korzyści związane z realizacją zleceń za
+                pomocą mechanizmów algorytmicznych. Dotyczy to także prowizji, jakie Klient będzie zobowiązany pokryć w
+                związku z transakcjami, które będą zawierane w oparciu o algorytm, nawet przy ich znacznej ilości.
+                3. Klient odpowiada za opóźnione wygenerowanie lub niewygenerowanie lub błędne wygenerowanie zleceń za
+                pomocą mechanizmów algorytmicznych. W szczególności Klient ponosi odpowiedzialność za ww. zdarzenia
+                powstałe w wyniku błędów w oprogramowaniu mechanizmów algorytmicznych.
+                4. Nie można zagwarantować osiągnięcia określonego wyniku finansowego na transakcjach zawartych z
+                wykorzystaniem mechanizmów algorytmicznych.
+                5. Transakcje realizowane za pomocą mechanizmów algorytmicznych traktowane są jako transakcje zawierane
+                przez Klienta.
+                6. Składanie, usuwanie lub modyfikowanie zleceń z wykorzystaniem mechanizmów algorytmicznych traktowane
+                jest jako zlecenia złożone przez Klienta.
+                7. W wersji webowej oraz mobilnej systemu transakcyjnego może nie istnieć możliwość uruchomienia
+                strategii automatycznych.
+                8. Wszelkie przykładowe strategie algorytmiczne zaprezentowane w czasie niniejszego szkolenia mają
+                jedynie charakter edukacyjny i nie powinny być stosowne na rachunkach rzeczywistych.
+                Dom Maklerski TMS Brokers S.A. podlega nadzorowi Komisji Nadzoru Finansowego i prowadzi działalność
+                maklerską na podstawie zezwolenia z dnia 26 kwietnia 2004 r. (KPWiG-4021-54-1/2004). Kontakt: Skylight
+                Ul. Złota 59; 00-120 Warszawa, Polska; Tel.: +48 22 27 66 200”
+            </small>
+        </section>
+
+        <section style="text-align: left;">
+            <h1>Dziękuję za uwagę</h1>
+
+            <a>Zapraszam do zadawania pytań.</a><br>
+            <a>tomasz@waszczyk.com</a>
+        </section>
+
+
+        <!--Szkolenie 3:-->
+        <!--<section>-->
+        <!--<h2>Agenda</h2>-->
+        <!--<ul>-->
+        <!--<li>Uruchomienie strategii z poprzedniego szkolenia</li>-->
+        <!--<li>Metody ustawiania zlecenia Stop Loss</li>-->
+        <!--<li>Obliczanie poziomów zlecenia Take Profit</li>-->
+        <!--<li>Wprowadzanie zleceń oczekujących do automatu</li>-->
+        <!--<li>Zabezpieczenie naszego automatu transakcyjnego</li>-->
+        <!--<li>Programowanie obiektowe – MQL5 różnice oraz możliwości</li>-->
+        <!--</ul>-->
+        <!--</section>-->
+
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+            {src: 'plugin/notes/notes.js', async: true}
+        ]
+    });
+
+    Reveal.configure({slideNumber: true});
+    // Slide number formatting can be configured using these variables:
+    //  h: current slide's horizontal index
+    //  v: current slide's vertical index
+    //  c: current slide index (flattened)
+    //  t: total number of slides (flattened)
+    Reveal.configure({slideNumber: 'c / t'});
+</script>
+
+</body>
 </html>
